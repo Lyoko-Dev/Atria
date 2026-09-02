@@ -536,7 +536,7 @@ function renderSidebarNav() {
         {view:'biblioteca', icon:'◫', label:'Library'},
         {view:'headspace', icon:'⌂', label:'Headspace'},
         {view:'relations', icon:'↔', label:'Relationships'},
-        {view:'wiki', icon:'?', label:'Guide'},
+        {view:'wiki', url:'https://atria.lyokodev.com/wiki/', icon:'?', label:'Guide'},
       ]
     },
     {
@@ -566,8 +566,9 @@ function renderSidebarNav() {
     html += `<div class="nav-separator"></div><div class="nav-group-label">${sec.label}</div>`;
     visible.forEach(it => {
       const extra = it.comtab ? ` data-comtab="${it.comtab}"` : '';
+      const destination = it.url ? ` data-url="${it.url}"` : '';
       const isActive = it.comtab ? currentSection === it.comtab : currentSection === it.view;
-      html += `<button type="button" class="nav-item${isActive ? ' active' : ''}" data-view="${it.view}" data-label="${it.label}"${extra}${isActive ? ' aria-current="page"' : ''}>
+      html += `<button type="button" class="nav-item${isActive ? ' active' : ''}" data-view="${it.view}" data-label="${it.label}"${extra}${destination}${isActive ? ' aria-current="page"' : ''}>
         <div class="nav-icon">${it.icon}</div><div class="nav-label">${it.label}</div>
       </button>`;
     });
@@ -576,6 +577,7 @@ function renderSidebarNav() {
   nav.innerHTML = html;
   nav.querySelectorAll('.nav-item[data-view]').forEach(el => {
     el.addEventListener('click', () => {
+      if (el.dataset.url) { window.location.href = el.dataset.url; return; }
       if (el.dataset.comtab) comTab = el.dataset.comtab;
       if (el.dataset.cfg) {
         navigateTo(el.dataset.view);
@@ -1549,7 +1551,6 @@ function navigateTo(view, _fromPopstate) {
     seguridad: renderSeguridadRoute,
     finanzas: renderFinanzasDashboard,
     fronting: renderFronting,
-    wiki: window.AtriaWikiView.render,
     tablon: renderTablon,
     fichas: renderFichas,
     tracker: window.AtriaTrackerView.render,
