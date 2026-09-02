@@ -179,6 +179,10 @@
     window.AtriaStorage.writeJsonKey(ONLINE_DEVICES_CACHE_KEY, Array.isArray(devices) ? devices : []);
   }
 
+  function saveOnlineDeviceCache(devices) {
+    return saveOnlineDevicesCache(devices);
+  }
+
   function upsertOnlineDevice(deviceName, email, systemId) {
     const devices = loadOnlineDevicesCache();
     const id = `local-${systemId}-${deviceName}`.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
@@ -312,6 +316,7 @@
     saveOnlineKeypair,
     loadOnlineDevicesCache,
     saveOnlineDevicesCache,
+    saveOnlineDeviceCache,
     upsertOnlineDevice,
     activateOnlineAccountSession,
     disableOnlineAccountSession,

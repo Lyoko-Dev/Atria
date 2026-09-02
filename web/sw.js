@@ -1,5 +1,5 @@
 // Cambiar VERSION en cada despliegue que modifique archivos de la app.
-const VERSION = '20260902-1';
+const VERSION = '20260902-2';
 const CACHE = 'atria-' + VERSION;
 const APP_ROOT = new URL('./', self.location.href);
 const DEFAULT_LAUNCH_URL = new URL('es/?source=pwa', APP_ROOT).toString();

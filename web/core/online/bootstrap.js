@@ -43,6 +43,10 @@
     return window.AtriaOnlineAccount.saveOnlineDevicesCache(devices);
   }
 
+  function saveOnlineDeviceCache(devices) {
+    return saveOnlineDevicesCache(devices);
+  }
+
   function upsertOnlineDevice(deviceName, email, systemId) {
     return window.AtriaOnlineAccount.upsertOnlineDevice(deviceName, email, systemId);
   }
@@ -672,6 +676,7 @@
     saveOnlineKeypair,
     loadOnlineDevicesCache,
     saveOnlineDevicesCache,
+    saveOnlineDeviceCache,
     upsertOnlineDevice,
     refreshOnlineDevices,
     revokeOnlineDevice,

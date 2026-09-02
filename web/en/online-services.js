@@ -71,6 +71,9 @@ function loadOnlineDevicesCache() {
 function saveOnlineDevicesCache(devices) {
   return window.AtriaOnlineBootstrap.saveOnlineDevicesCache(devices);
 }
+function saveOnlineDeviceCache(devices) {
+  return saveOnlineDevicesCache(devices);
+}
 function upsertOnlineDevice(deviceName, email, systemId) {
   return window.AtriaOnlineBootstrap.upsertOnlineDevice(deviceName, email, systemId);
 }
