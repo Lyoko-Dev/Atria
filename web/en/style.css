@@ -21,21 +21,21 @@
   --transition: 200ms cubic-bezier(0.4,0,0.2,1);
 }
 .light-mode {
-  --bg-0: #ece8ff;
-  --bg-1: #dfd9ff;
-  --bg-2: #d1caff;
-  --bg-3: #c3baff;
-  --bg-hover: #b5abff;
-  --accent: #4d3a9b;
-  --accent-2: #a32b78;
+  --bg-0: #f5f6fa;
+  --bg-1: #ffffff;
+  --bg-2: #eef1f6;
+  --bg-3: #e3e7ef;
+  --bg-hover: #e9edf4;
+  --accent: #5546a8;
+  --accent-2: #a13d78;
   --accent-3: #087765;
   --accent-4: #8a5200;
-  --border: rgba(100,80,200,0.20);
-  --border-active: rgba(100,80,200,0.52);
-  --text-0: #1a1530;
-  --text-1: #3a3060;
-  --text-2: #65558f;
-  --text-3: #574d7c;
+  --border: rgba(39,48,70,0.14);
+  --border-active: rgba(85,70,168,0.42);
+  --text-0: #202536;
+  --text-1: #3c465d;
+  --text-2: #667085;
+  --text-3: #8a94a6;
   --green: #007a4b;
   --red: #b0204c;
 }
@@ -2304,6 +2304,9 @@ body.atria-simplified-mode .nav-label, body.atria-simplified-mode .form-label { 
 .cfg-hub-card:hover { background:var(--bg-2); filter:brightness(1.06); }
 .hub-btn:hover::before { transform:scaleY(0); }
 .alter-card:hover .alter-avatar { border-color:transparent; box-shadow:none; }
+.light-mode .theme-opt.selected,
+.light-mode .accent-opt.selected { border-color:var(--accent); }
+.light-mode .btn-primary { color:#fff; }
 .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
 .wiki-card h2{margin:0 0 8px;font-size:17px;color:var(--text-1)}
 .wiki-card p{margin:0;color:var(--text-2);line-height:1.55}

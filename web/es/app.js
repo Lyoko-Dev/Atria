@@ -9735,7 +9735,10 @@ function applyConfig(cfg) {
     const ac = ACCENT_COLORS.find(a=>a.id===cfg.accentColor);
     if (ac) document.documentElement.style.setProperty('--accent', ac.value);
   }
-  const custom = cfg.customTheme || {};
+  const theme = cfg.theme || 'auto';
+  const isLightTheme = theme === 'light' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: light)').matches);
+  applyTheme(theme);
+  const custom = isLightTheme ? {} : (cfg.customTheme || {});
   const root = document.documentElement;
   const validHex = value => /^#[0-9a-f]{6}$/i.test(String(value || ''));
   [['--bg-0', custom.background], ['--bg-1', custom.surface], ['--text-0', custom.text]].forEach(([name, value]) => {
@@ -9751,7 +9754,6 @@ function applyConfig(cfg) {
     if (lbl) lbl.textContent = cfg.systemName + ' · Atria';
   }
   // Theme (light/dark/auto)
-  applyTheme(cfg.theme||'auto');
   document.body.classList.toggle('mobile-nav-fixed', !!cfg.mobileNavFixed);
   document.body.classList.toggle('atria-simplified-mode', !!cfg.simplifiedMode || ['bebe','nino'].includes(activeAlter?.ageType));
 }
@@ -10055,7 +10057,7 @@ function renderConfigSection(section) {
     app.querySelectorAll('[data-theme]').forEach(opt=>opt.addEventListener('click',()=>{
       app.querySelectorAll('[data-theme]').forEach(o=>o.classList.remove('selected')); opt.classList.add('selected');
       const c=loadConfig(); c.theme=opt.dataset.theme; saveConfig(c);
-      applyTheme(c.theme);
+      applyConfig(c);
       showToast('Tema actualizado ✓');
     }));
     app.querySelectorAll('.accent-opt').forEach(opt=>opt.addEventListener('click',()=>{
