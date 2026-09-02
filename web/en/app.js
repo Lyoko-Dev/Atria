@@ -10252,18 +10252,6 @@ function renderConfigSection(section) {
       const deviceName = row?.querySelector('.online-device-inline-name')?.value || '';
       saveOnlineDeviceNameFromConfig(deviceId, deviceName, btn);
     }));
-    app.querySelector('#btn-online-save-device')?.addEventListener('click', () => {
-      const deviceName = (app.querySelector('#online-device-name')?.value || '').trim() || cfg.systemName || 'This device';
-      const nextCfg = { ...loadConfig(), onlineDeviceName: deviceName };
-      saveConfig(nextCfg);
-      const session = loadOnlineSession();
-      if (session) {
-        saveOnlineSession({ ...session, deviceName });
-        upsertOnlineDevice(deviceName, session.email, session.systemId);
-      }
-      showToast('Device updated ✓');
-      renderLayer0();
-    });
     const updateConfigFriendCode = account => {
       const freshAccount = account || loadOnlineAccount() || {};
       const freshOnline = getOnlineProfile(loadConfig());

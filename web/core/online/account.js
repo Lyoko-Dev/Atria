@@ -183,9 +183,9 @@
     return saveOnlineDevicesCache(devices);
   }
 
-  function upsertOnlineDevice(deviceName, email, systemId) {
+  function upsertOnlineDevice(deviceName, email, systemId, knownDeviceId = '') {
     const devices = loadOnlineDevicesCache();
-    const id = `local-${systemId}-${deviceName}`.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+    const id = knownDeviceId || `local-${generateOnlineSystemId()}-${Date.now().toString(36)}`;
     const now = new Date().toISOString();
     const existing = devices.find(d => d.id === id);
     if (existing) {
@@ -268,7 +268,7 @@
     }, loadConfig);
     if (keypair) saveOnlineKeypair(keypair);
     if (Array.isArray(devices) && devices.length) saveOnlineDevicesCache(devices);
-    else upsertOnlineDevice(deviceName, email, resolvedSystemId);
+    else upsertOnlineDevice(deviceName, email, resolvedSystemId, nextCfg.onlineDeviceId || '');
     if (hasOnlineBackendConfigured && hasOnlineBackendConfigured(nextCfg) && typeof startOnlineSyncLoop === 'function') {
       if (typeof stopOnlineSyncLoop === 'function') stopOnlineSyncLoop();
       startOnlineSyncLoop();
@@ -280,7 +280,7 @@
   function disableOnlineAccountSession(deps) {
     const { loadConfig, saveConfig, stopOnlineSyncLoop } = deps;
     const current = loadConfig();
-    saveConfig({ ...current, onlineEnabled: false, onlineFrontingEnabled: false, onlineAuthToken: '', onlineAccountId: null, onlineRememberSession: true, onlineSessionPersistence: 'local', onlineSessionExpiresAt: null });
+    saveConfig({ ...current, onlineEnabled: false, onlineFrontingEnabled: false, onlineAuthToken: '', onlineAccountId: null, onlineDeviceId: null, onlineDeviceName: '', onlineRememberSession: true, onlineSessionPersistence: 'local', onlineSessionExpiresAt: null });
     saveOnlineSession(null);
     saveOnlineKeypair(null);
     saveOnlineAccount(null, loadConfig, saveConfig);
