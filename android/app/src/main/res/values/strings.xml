@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Atria</string>
+    <string name="title_activity_main">Atria</string>
+    <string name="package_name">com.lyokodev.atria</string>
+    <string name="custom_url_scheme">com.lyokodev.atria</string>
+</resources>

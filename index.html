@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Atria</title>
+    <link rel="manifest" href="manifest.json?v=20260827-13">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Atria">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0f;
+    color: #f0eeff;
+    font-family: 'Syne', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #a08aff;
+  }
+  .btns {
+    display: flex;
+    gap: 12px;
+  }
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: .12em;
+    padding: 12px 32px;
+    border-radius: 10px;
+    background: #16162a;
+    border: 1px solid rgba(120,120,200,0.12);
+    color: #b8b4d8;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 200ms;
+  }
+  .btn:hover {
+    background: #1e1e35;
+    border-color: rgba(160,140,255,0.35);
+    color: #f0eeff;
+  }
+</style>
+<link rel="stylesheet" href="assets/vendor/fonts/google-fonts.css">
+<script>
+  // Redirige la raíz al idioma elegido o a la entrada de la app instalada.
+  (function() {
+    const url = new URL(window.location.href);
+    const suffix = (url.search || '') + (url.hash || '');
+    const lang = localStorage.getItem('atria_lang');
+    const inInstalledMode =
+      url.searchParams.get('source') === 'pwa' ||
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.matchMedia('(display-mode: fullscreen)').matches ||
+      window.matchMedia('(display-mode: minimal-ui)').matches ||
+      window.navigator.standalone === true;
+    // La ruta absoluta evita que el WebView concatene /es/ al resolver el fallback.
+    if (lang === 'es') { window.location.replace('/es/index.html' + suffix); }
+    else if (lang === 'en') { window.location.replace('/en/index.html' + suffix); }
+    else if (inInstalledMode) { window.location.replace('/es/index.html' + suffix); }
+  })();
+</script>
+</head>
+<body>
+<div class="selector">
+  <div class="logo">◬ Atria</div>
+  <div class="btns">
+    <a class="btn" href="/es/index.html" onclick="localStorage.setItem('atria_lang','es')" aria-label="Cambiar a español">ES</a>
+    <a class="btn" href="/en/index.html" onclick="localStorage.setItem('atria_lang','en')" aria-label="Switch to English">EN</a>
+  </div>
+</div>
+<script>
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      regs.forEach(reg => reg.update());
+      return navigator.serviceWorker.register('sw.js?v=20260827-13');
+    });
+  }
+</script>
+
+</body>
+</html>
