@@ -2305,6 +2305,8 @@ body.atria-simplified-mode .nav-label, body.atria-simplified-mode .form-label { 
 .hub-btn:hover::before { transform:scaleY(0); }
 .hub-btn:hover { background:var(--bg-hover); filter:brightness(1.1); }
 .hub-btn:hover .hub-btn-name { color:var(--text-0); }
+.hub-btn:hover { background:#2a2948 !important; color:var(--text-0); }
+.light-mode .hub-btn:hover { background:#dfe5f0 !important; }
 .alter-card:hover .alter-avatar { border-color:transparent; box-shadow:none; }
 .light-mode .theme-opt.selected,
 .light-mode .accent-opt.selected { border-color:var(--accent); }
