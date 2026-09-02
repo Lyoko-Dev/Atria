@@ -234,7 +234,7 @@
     eventsSource.addEventListener('connected', event => {
       try {
         const data = JSON.parse(event.data || '{}');
-        if (data?.cursor) saveOnlineSyncState({ ...(loadOnlineSyncState() || {}), cursor: data.cursor, realtimeConnectedAt: new Date().toISOString(), lastError: null });
+        if (data?.cursor) saveOnlineSyncState({ ...(loadOnlineSyncState() || {}), cursor: data.cursor, realtimeConnectedAt: new Date().toISOString(), realtimeDisconnectedAt: null, realtimeState: 'connected', lastError: null });
       } catch {}
     });
     eventsSource.addEventListener('change', event => handleEventData(parseEventData(event), deps));
@@ -246,7 +246,7 @@
         eventsSource.close();
         eventsSource = null;
       }
-      saveOnlineSyncState({ ...(loadOnlineSyncState() || {}), realtimeDisconnectedAt: new Date().toISOString(), realtimeState: 'error', lastError: 'realtime_disconnected' });
+      saveOnlineSyncState({ ...(loadOnlineSyncState() || {}), realtimeDisconnectedAt: null, realtimeState: 'reconnecting', lastError: null });
       if (reconnectTimer) clearTimeout(reconnectTimer);
       reconnectTimer = setTimeout(() => {
         reconnectTimer = null;
