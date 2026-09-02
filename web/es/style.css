@@ -191,9 +191,9 @@ button:not(.btn):not(.btn-primary):not(.btn-ghost):not(.btn-danger):not(.btn-cri
 .hub-nav>div{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px 12px}
 .hub-section-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
 .hub-btn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
-.hub-btn{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-2);border:1px solid rgba(120,120,200,0.28);border-radius:var(--radius);cursor:pointer;transition:var(--transition);text-align:left;width:100%;position:relative;overflow:hidden}
+.hub-btn{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:var(--transition);text-align:left;width:100%;position:relative;overflow:hidden}
 .hub-btn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--btn-color,var(--accent));transform:scaleY(0);transform-origin:center;transition:transform var(--transition)}
-.hub-btn:hover{background:var(--bg-2);border-color:rgba(160,138,255,.2);transform:translateX(2px)}
+.hub-btn:hover{background:var(--bg-hover);border-color:var(--border);transform:translateX(2px)}
 .hub-btn:hover::before{transform:scaleY(1)}
 .hub-btn:focus-visible{background:var(--bg-2);border-color:var(--accent);box-shadow:0 0 0 3px rgba(160,138,255,.18)}
 .hub-btn:focus-visible::before{transform:scaleY(1)}
