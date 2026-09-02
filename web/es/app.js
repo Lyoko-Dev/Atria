@@ -1285,6 +1285,9 @@ function toggleFavoriteAlter(alterId) {
 }
 
 function selectAlter(alter) {
+  const previousAlterId = activeAlter?.id || null;
+  const frontingAlterId = getFrontingActual()?.alterId || null;
+  const isSwitch = (previousAlterId && previousAlterId !== alter.id) || (frontingAlterId && frontingAlterId !== alter.id);
   activeAlter = alter;
   document.body.classList.toggle('atria-simplified-mode', !!loadConfig().simplifiedMode || ['bebe','nino'].includes(alter.ageType));
   registrarSesion(alter.id);
@@ -1333,7 +1336,7 @@ function selectAlter(alter) {
     // Arrancar scheduler de notificaciones nativas si el permiso ya está concedido
     if (nativeNotifGranted()) startNotifScheduler();
     // Preguntar cómo se siente el alter al entrar
-    askMoodOnEntry(alter, () => {
+    askMoodOnEntry(alter, isSwitch, () => {
       navigateTo('hub');
       processPendingNotifRoute();
       // Si hay un switch pendiente por confirmar, mostrar modal después del mood
@@ -1346,7 +1349,16 @@ function selectAlter(alter) {
   }, 350);
 }
 
-function askMoodOnEntry(alter, onDone) {
+function askMoodOnEntry(alter, isSwitch, onDone) {
+  const today = new Date().toISOString().slice(0,10);
+  const promptKey = 'tid_mood_entry_prompt';
+  let lastPrompt = null;
+  try { lastPrompt = JSON.parse(localStorage.getItem(promptKey) || 'null'); } catch (_) {}
+  if (lastPrompt?.date === today && (!isSwitch || lastPrompt.alterId === alter.id)) {
+    onDone();
+    return;
+  }
+  localStorage.setItem(promptKey, JSON.stringify({ alterId: alter.id, date: today }));
   const moods = getMoods();
   const ov = document.createElement('div');
   ov.className = 'modal-overlay mood-entry-overlay';
