@@ -9484,7 +9484,7 @@ function renderConfig() {
     {id:'notificaciones',  icon:'🔔', name:'Notifications',   desc:'Which alerts to receive and when',           color:'#ff8ae2', bg:'rgba(255,138,226,0.08)'},
     {id:'online',          icon:'☁', name:'Online features', desc:onlineEnabled ? `Enabled${onlineBaseUrl ? ' · service ready' : ' · local only'} · automatic sync` : 'Friends, online chat, presence, sync and backup', color:'#5fffb0', bg:'rgba(95,255,176,0.08)'},
     {id:'peligro',         icon:'⚠️', name:'Danger zone',  desc:'Reset modules or delete everything',        color:'#ff6b8a', bg:'rgba(255,107,138,0.08)'},
-    {id:'acerca',          icon:'💜', name:'About Atria',      desc:APP_VERSION+' · All local, no server', color:'#a08aff', bg:'rgba(160,138,255,0.08)'},
+    {id:'acerca',          icon:'💜', name:'About Atria',      desc:APP_VERSION+' · Private, local-first, with optional online features', color:'#a08aff', bg:'rgba(160,138,255,0.08)'},
   ];
 
   app.innerHTML = `
@@ -10412,18 +10412,17 @@ function renderConfigSection(section) {
       <div class="config-section">
         <div class="config-section-header">
           <div class="config-section-icon">💜</div>
-          <div><div class="config-section-title">About Atria</div><div class="config-section-desc">${APP_VERSION} · Private, local, and made with care</div></div>
+          <div><div class="config-section-title">About Atria</div><div class="config-section-desc">${APP_VERSION} · Private, local-first, and made with care</div></div>
         </div>
         <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
           <div style="font-size:13px;color:var(--text-1);line-height:1.7">
-            Atria is a local-first internal management tool for dissociative systems.
+            Atria is an internal management tool for dissociative systems, designed to work locally from the start.
             It helps you organize alters, fronting, agenda, journal, notes, and everyday care in one place.
-            Your data is stored <strong>exclusively on your device</strong>, with no account and no required technical setup.
-            If you enable online features, sync and backup are automatic and <strong>end-to-end encrypted</strong>.
+            Your data is stored locally by default. If you enable online features, you can use an account to sync devices, friends, chat, and end-to-end encrypted backups.
           </div>
           <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);display:flex;flex-direction:column;gap:4px">
             <div>Version · ${APP_VERSION}</div>
-            <div>Storage · localStorage (local-first, no required server)</div>
+            <div>Storage · localStorage by default · optional online sync and backup</div>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a href="https://ko-fi.com/lyokodev" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;background:rgba(160,138,255,0.12);color:var(--accent);font-size:12px;font-family:'DM Mono',monospace;text-decoration:none;border:1px solid rgba(160,138,255,0.2)">☕ Ko-fi</a>

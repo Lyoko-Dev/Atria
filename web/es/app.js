@@ -9885,7 +9885,7 @@ function renderConfig() {
     {id:'notificaciones',  icon:'🔔', name:'Notificaciones',   desc:'Qué avisos recibir y cuándo',           color:'#ff8ae2', bg:'rgba(255,138,226,0.08)'},
     {id:'online',          icon:'☁',  name:'Funciones online', desc:online.enabled ? `Activas · ${online.email || online.systemId} · sync automático` : 'Amigos, chat online, presencia, sync y backup', color:'#5fffb0', bg:'rgba(95,255,176,0.08)'},
     {id:'peligro',         icon:'⚠️', name:'Zona de peligro',  desc:'Resetear módulos o borrar todo',        color:'#ff6b8a', bg:'rgba(255,107,138,0.08)'},
-    {id:'acerca',          icon:'💜', name:'Sobre Atria',      desc:APP_VERSION+' · Todo local, sin servidor', color:'#a08aff', bg:'rgba(160,138,255,0.08)'},
+    {id:'acerca',          icon:'💜', name:'Sobre Atria',      desc:APP_VERSION+' · Privado, local-first y con funciones online opcionales', color:'#a08aff', bg:'rgba(160,138,255,0.08)'},
   ];
 
   app.innerHTML = `
@@ -10842,18 +10842,17 @@ function renderConfigSection(section) {
       <div class="config-section">
         <div class="config-section-header">
           <div class="config-section-icon">💜</div>
-          <div><div class="config-section-title">Sobre Atria</div><div class="config-section-desc">${APP_VERSION} · Privado, local y pensado con cuidado</div></div>
+          <div><div class="config-section-title">Sobre Atria</div><div class="config-section-desc">${APP_VERSION} · Privado, local-first y pensado con cuidado</div></div>
         </div>
         <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
           <div style="font-size:13px;color:var(--text-1);line-height:1.7">
-            Atria es una herramienta local-first de gestión interna para sistemas disociativos.
+            Atria es una herramienta de gestión interna para sistemas disociativos, diseñada para funcionar localmente desde el primer momento.
             Te ayuda a organizar alters, fronting, agenda, diario, notas y cuidado cotidiano desde una sola app.
-            Tus datos se guardan <strong>exclusivamente en tu dispositivo</strong>, sin cuentas ni configuración técnica obligatoria.
-            Si activas las funciones online, el sync y backup son automáticos y <strong>cifrados de extremo a extremo</strong>.
+            Tus datos se guardan localmente por defecto. Si activas las funciones online, puedes usar una cuenta para sincronizar dispositivos, amistades, chat y copias de seguridad cifradas de extremo a extremo.
           </div>
           <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);display:flex;flex-direction:column;gap:4px">
             <div>Versión · ${APP_VERSION}</div>
-            <div>Almacenamiento · localStorage (local-first, sin servidor obligatorio)</div>
+            <div>Almacenamiento · localStorage por defecto · sync y backup online opcionales</div>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a href="https://ko-fi.com/lyokodev" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;background:rgba(160,138,255,0.12);color:var(--accent);font-size:12px;font-family:'DM Mono',monospace;text-decoration:none;border:1px solid rgba(160,138,255,0.2)">☕ Ko-fi</a>
