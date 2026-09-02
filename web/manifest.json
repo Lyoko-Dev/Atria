@@ -60,37 +60,5 @@
     "lifestyle",
     "productivity",
     "utilities"
-  ],
-  "screenshots": [
-    {
-      "src": "assets/Screenshot/screen1.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "assets/Screenshot/screen2.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "assets/Screenshot/screen3.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "assets/Screenshot/screen4.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "assets/Screenshot/screen5.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
   ]
-}
+  }

@@ -1,5 +1,5 @@
 {
-  "id": "/Atria/en",
+  "id": "/Atria/es",
   "background_color": "#000000",
   "dir": "ltr",
   "display": "fullscreen",
@@ -8,14 +8,14 @@
     "standalone",
     "minimal-ui"
   ],
-  "name": "Atria - Plural Management",
+  "name": "Atria - Gestión Plural",
   "short_name": "Atria",
   "orientation": "portrait-primary",
-  "scope": "/en/",
-  "start_url": "/en/?source=pwa",
+  "scope": "/es/",
+  "start_url": "/es/?source=pwa",
   "theme_color": "#000000",
-  "lang": "en",
-  "description": "Plural Systems Management App",
+  "lang": "es",
+  "description": "App de gestión para sistemas plurales",
   "icons": [
     {
       "src": "/assets/Icon/icon48x48.png",
@@ -60,37 +60,5 @@
     "lifestyle",
     "productivity",
     "utilities"
-  ],
-  "screenshots": [
-    {
-      "src": "/assets/Screenshot/screen1.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/assets/Screenshot/screen2.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/assets/Screenshot/screen3.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/assets/Screenshot/screen4.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/assets/Screenshot/screen5.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
   ]
-}
+  }
